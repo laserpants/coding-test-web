@@ -14,7 +14,7 @@ export type ISIN = string;
  * Validates whether a given string is a valid ISIN (ISO 6166 format).
  *
  * @param isin - The ISIN string to validate.
- * @returns True if the ISIN is valid, or false otherwise.
+ * @returns True if the ISIN code is valid, or false otherwise.
  */
 export function isValidISIN(isin: string): boolean {
   const regex = /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/;
