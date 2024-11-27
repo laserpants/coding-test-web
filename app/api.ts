@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://0.0.0.0:3000';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 export async function apiFetch(endpoint: string, options?: RequestInit) {
   const url = `${BASE_URL}/api/${endpoint}`;

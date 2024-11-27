@@ -1,6 +1,6 @@
 'use client';
 
-import { ICompany } from './company.types';
+import type { ICompany } from './company.types';
 
 export default function Company({ companyName }: ICompany) {
   return (
