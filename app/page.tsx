@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { Suspense } from 'react';
 import CompanyList from './components/CompanyList';
+import LoadingIndicator from './components/LoadingIndicator';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,13 +14,5 @@ export default function HomePage() {
         <CompanyList />
       </Suspense>
     </main>
-  );
-}
-
-function LoadingIndicator() {
-  return (
-    <>
-      I am loading...
-    </>
   );
 }
