@@ -17,6 +17,6 @@ export type ISIN = string;
  * @returns True if the ISIN is valid, or false otherwise.
  */
 export function isValidISIN(isin: string): boolean {
-  const isinRegex = /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/;
-  return isinRegex.test(isin);
+  const regex = /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/;
+  return regex.test(isin);
 }

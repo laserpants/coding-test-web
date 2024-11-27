@@ -10,12 +10,13 @@ export default function CompanyList() {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await fetch('/api/companies');
+        const response = await fetch('/api/companies', { cache: 'no-store' });
         if (!response.ok) {
           throw new Error('Failed to fetch companies');
         }
         const { data }: { data: ICompany[] } = await response.json();
         setCompanies(data);
+        setError(null);
       } catch(err) {
         setError(err.message);
       }
