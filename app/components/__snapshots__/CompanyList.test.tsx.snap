@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CompanyList (Server Component) renders correctly 1`] = `
+exports[`CompanyList renders correctly 1`] = `
 <div>
   <div>
     <li>

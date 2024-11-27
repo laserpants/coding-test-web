@@ -33,5 +33,5 @@ export interface ICompany {
   reportingCurrency: Currency;       // Reporting currency, e.g., 'NOK'
   colorSettings: IColorSettings;     // Color settings object
   events: IEvent[];                  // Array of company events
-  isins?: ISIN[];                    // Optional array of ISO 6166 ISINs
+  isins?: ISIN[];                    // Optional array of ISO 6166 ISIN codes
 }

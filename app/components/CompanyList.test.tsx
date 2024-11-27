@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { act } from "react-dom/test-utils";
 import CompanyList from './CompanyList';
 
 // Mock fetch globally
@@ -16,9 +17,10 @@ global.fetch = jest.fn(() =>
   })
 ) as jest.Mock;
 
-describe('CompanyList (Server Component)', () => {
+describe('CompanyList', () => {
   it('renders correctly', async () => {
-    const { container } = render(await CompanyList());
+    const { container } = await act(async() => render(<CompanyList />));
+
     expect(container).toMatchSnapshot();
   });
 
@@ -27,11 +29,13 @@ describe('CompanyList (Server Component)', () => {
       Promise.reject(new Error('Failed to fetch'))
     );
 
-    await expect(CompanyList()).rejects.toThrow('Failed to fetch');
+    const { container } = await act(async() => render(<CompanyList />));
+
+    expect(container).toContain('Error');
   });
 
   it('renders the list of companies', async () => {
-    const { container } = render(await CompanyList());
+    const { container } = await act(async() => render(<CompanyList />));
 
     const rows = container.querySelectorAll('div li');
     expect(rows).toHaveLength(3);
