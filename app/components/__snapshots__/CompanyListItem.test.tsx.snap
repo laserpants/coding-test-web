@@ -4,6 +4,7 @@ exports[`Company renders correctly 1`] = `
 <div>
   <li
     class="flex items-center py-4"
+    role="listitem"
   >
     <img
       alt="Company A"

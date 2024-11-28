@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
+import { ICompany } from "../../types/company";
 
-const data = {
+const data: { data: ICompany[] } = {
   data: [
     {
       companyId: 1,

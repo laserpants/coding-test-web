@@ -1,12 +1,12 @@
-interface FetchFunction {
-  (): Promise<any>;
+interface FetchFunction<T> {
+  (): Promise<T>;
 }
 
-export async function fetchWithBackoff(
-  fetchFn: FetchFunction,
+export async function fetchWithBackoff<T>(
+  fetchFn: FetchFunction<T>,
   retries: number = 3,
   delay: number = 1000,
-): Promise<any> {
+): Promise<T> {
   try {
     return await fetchFn();
   } catch (err) {
