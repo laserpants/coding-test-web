@@ -1,11 +1,7 @@
-'use client';
+"use client";
 
-import type { ICompany } from './company.types';
+import type { ICompany } from "../types/company";
 
 export default function Company({ companyName }: ICompany) {
-  return (
-    <li>
-      {companyName}
-    </li>
-  );
+  return <li>{companyName}</li>;
 }
