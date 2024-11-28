@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Company renders correctly 1`] = `
+<div>
+  <li>
+    Company A
+  </li>
+</div>
+`;
