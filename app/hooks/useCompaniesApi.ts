@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ICompany } from "../types/company";
+import { fetchWithBackoff } from "../utils/fetchWithBackoff";
 
 export function useCompaniesApi() {
   const [companies, setCompanies] = useState<ICompany[]>([]);
@@ -9,11 +10,20 @@ export function useCompaniesApi() {
   const fetchCompanies = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("/api/companies");
-      if (!response.ok) {
-        throw new Error("Failed to fetch companies.");
-      }
-      const { data: companies } = await response.json();
+
+      const { data: companies } = await fetchWithBackoff(
+        // Use backoff for retries
+        async () => {
+          const response = await fetch("/api/companies");
+          if (!response.ok) {
+            throw new Error("Failed to fetch companies.");
+          }
+          return response.json();
+        },
+        3, // retries
+        1000 // delay
+      );
+
       setCompanies(companies);
       setError(null);
     } catch (err) {
