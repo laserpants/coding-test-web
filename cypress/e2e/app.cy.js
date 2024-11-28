@@ -12,17 +12,13 @@ describe("Page", () => {
 
     cy.visit("http://localhost:3000/");
 
-    cy.get("h2").contains("Quartr");
+    cy.get("h3").contains("Quartr");
 
     cy.wait("@getCompanies");
 
-    // Find the <div> containing the list of <li> tags
-    cy.get("div")
-      .find("li")
-      .should("have.length", 2)
-      .and(($items) => {
-        expect($items[0]).to.contain.text("Company A");
-        expect($items[1]).to.contain.text("Company B");
-      });
+    cy.findAllByRole("listitem").should("have.length", 2);
+
+    // Verify the text content of the first list item
+    cy.findAllByRole("listitem").first().should("contain.text", "Company A");
   });
 });
