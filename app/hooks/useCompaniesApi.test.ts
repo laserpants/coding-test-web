@@ -10,7 +10,7 @@ describe("useCompaniesApi", () => {
     jest.clearAllMocks();
   });
 
-  it("fetches and returns companies", async () => {
+  it("fetches and returns list of companies", async () => {
     // Mock a successful API response
     (global.fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce({
       ok: true,
