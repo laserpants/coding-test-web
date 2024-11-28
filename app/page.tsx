@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
-import { Suspense } from 'react';
-import CompanyList from './components/CompanyList';
+import CompanyList from "./components/CompanyList";
 
 const inter = Inter({ subsets: ["latin"] });
 

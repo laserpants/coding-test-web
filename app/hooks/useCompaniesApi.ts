@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ICompany } from "../types/company.types";
+import { ICompany } from "../types/company";
 
 export function useCompaniesApi() {
   const [companies, setCompanies] = useState<ICompany[]>([]);
