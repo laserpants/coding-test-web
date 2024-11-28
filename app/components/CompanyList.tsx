@@ -20,12 +20,21 @@ export default function CompanyList() {
           <span>{error}</span>
         </div>
         <button
+          role="button"
           onClick={retry}
           className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 transition"
         >
           Retry
         </button>
       </div>
+    );
+  }
+
+  if (companies.length === 0) {
+    return (
+      <p className="text-gray-500 py-4">
+        No companies available at the moment.
+      </p>
     );
   }
 

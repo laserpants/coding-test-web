@@ -21,7 +21,7 @@ export function useCompaniesApi() {
           return response.json();
         },
         3, // retries
-        1000 // delay
+        1000, // delay
       );
 
       setCompanies(companies);

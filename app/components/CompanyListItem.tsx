@@ -9,7 +9,7 @@ export default function CompanyListItem({
   description,
 }: ICompany) {
   return (
-    <li className="flex items-center py-4">
+    <li className="flex items-center py-4" role="listitem">
       <Image
         src={iconUrl ?? "https://placehold.co/50/png"}
         alt={companyName}

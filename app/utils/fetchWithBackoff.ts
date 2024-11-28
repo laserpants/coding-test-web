@@ -5,7 +5,7 @@ interface FetchFunction {
 export async function fetchWithBackoff(
   fetchFn: FetchFunction,
   retries: number = 3,
-  delay: number = 1000
+  delay: number = 1000,
 ): Promise<any> {
   try {
     return await fetchFn();
