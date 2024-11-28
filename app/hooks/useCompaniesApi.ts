@@ -6,26 +6,26 @@ export function useCompaniesApi() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchCompanies = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch("/api/companies");
-        if (!response.ok) {
-          throw new Error("Failed to fetch companies.");
-        }
-        const { data: companies } = await response.json();
-        setCompanies(companies);
-        setError(null);
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setIsLoading(false);
+  const fetchCompanies = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/companies");
+      if (!response.ok) {
+        throw new Error("Failed to fetch companies.");
       }
-    };
+      const { data: companies } = await response.json();
+      setCompanies(companies);
+      setError(null);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchCompanies();
   }, []);
 
-  return { companies, isLoading, error };
+  return { companies, isLoading, error, retry: fetchCompanies };
 }
