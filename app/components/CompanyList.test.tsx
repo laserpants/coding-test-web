@@ -28,15 +28,16 @@ describe("CompanyList", () => {
       }),
     } as Response);
 
-    const { container } = await act(async () => render(<CompanyList />));
+    await act(async () => render(<CompanyList />));
 
-    const rows = container.querySelectorAll("div li");
-    expect(rows).toHaveLength(3);
+    const listItems = screen.getAllByRole("listitem");
+
+    expect(listItems).toHaveLength(3);
   });
 
   it("handles fetch failure gracefully", async () => {
     (global.fetch as jest.MockedFunction<typeof fetch>).mockImplementationOnce(
-      () => Promise.reject(new Error("Failed to fetch")),
+      () => Promise.reject(new Error("Failed to fetch"))
     );
 
     await act(async () => render(<CompanyList />));

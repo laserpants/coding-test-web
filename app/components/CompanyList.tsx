@@ -30,10 +30,10 @@ export default function CompanyList() {
   }
 
   return (
-    <div className="divide-y divide-gray-200">
+    <ul className="divide-y divide-gray-200" role="list">
       {companies.map((company: ICompany) => (
         <CompanyListItem key={company.companyId} {...company} />
       ))}
-    </div>
+    </ul>
   );
 }

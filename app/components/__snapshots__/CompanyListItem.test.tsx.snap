@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Company renders correctly 1`] = `
+<div>
+  <li
+    class="flex items-center py-4"
+  >
+    <img
+      alt="Company A"
+      class="w-12 h-12 rounded-full"
+      data-nimg="1"
+      decoding="async"
+      height="50"
+      loading="lazy"
+      src="/_next/image?url=https%3A%2F%2Fplacehold.co%2F50%2Fpng&w=128&q=75"
+      srcset="/_next/image?url=https%3A%2F%2Fplacehold.co%2F50%2Fpng&w=64&q=75 1x, /_next/image?url=https%3A%2F%2Fplacehold.co%2F50%2Fpng&w=128&q=75 2x"
+      style="color: transparent;"
+      width="50"
+    />
+    <div
+      class="ml-4 flex-1"
+    >
+      <p
+        class="text-base font-semibold text-gray-800"
+      >
+        Company A
+      </p>
+      <div
+        class="text-sm text-gray-500 line-clamp-2"
+      >
+        <p
+          class="text-sm text-gray-500 "
+        />
+      </div>
+    </div>
+    <svg
+      class="w-6 h-6 text-gray-400 ml-2 cursor-pointer"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9 5l7 7-7 7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </li>
+</div>
+`;

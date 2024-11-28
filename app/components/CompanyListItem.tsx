@@ -1,6 +1,7 @@
 "use client";
 
 import type { ICompany } from "../types/company";
+import Image from "next/image";
 
 export default function CompanyListItem({
   iconUrl,
@@ -8,11 +9,13 @@ export default function CompanyListItem({
   description,
 }: ICompany) {
   return (
-    <div className="flex items-center py-4">
-      <img
-        src={iconUrl ?? "https://placehold.co/50"}
+    <li className="flex items-center py-4">
+      <Image
+        src={iconUrl ?? "https://placehold.co/50/png"}
         alt={companyName}
         className="w-12 h-12 rounded-full"
+        width="50"
+        height="50"
       />
       <div className="ml-4 flex-1">
         <p className="text-base font-semibold text-gray-800">{companyName}</p>
@@ -30,6 +33,6 @@ export default function CompanyListItem({
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
       </svg>
-    </div>
+    </li>
   );
 }

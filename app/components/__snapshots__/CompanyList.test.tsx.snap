@@ -2,6 +2,24 @@
 
 exports[`CompanyList renders correctly 1`] = `
 <div>
-  Error
+  <div
+    class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-4 rounded relative flex items-center justify-between"
+  >
+    <div>
+      <strong
+        class="font-bold"
+      >
+        Error: 
+      </strong>
+      <span>
+        Cannot read properties of undefined (reading 'ok')
+      </span>
+    </div>
+    <button
+      class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 transition"
+    >
+      Retry
+    </button>
+  </div>
 </div>
 `;
