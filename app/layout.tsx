@@ -1,5 +1,8 @@
+import { Inter } from "next/font/google";
 import "./styles/globals.css";
 import { ReactNode } from "react";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Quartr",
@@ -8,7 +11,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <head />
       <body>{children}</body>
     </html>
