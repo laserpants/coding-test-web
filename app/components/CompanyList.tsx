@@ -1,35 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import type { ICompany } from "../types/company";
 import Company from "./Company";
+import { ICompany } from "../types/company";
 import LoadingIndicator from "./LoadingIndicator";
+import { useCompaniesApi } from "../hooks/useCompaniesApi";
 
 export default function CompanyList() {
-  const [companies, setCompanies] = useState<ICompany[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchCompanies = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch("/api/companies");
-        if (!response.ok) {
-          throw new Error("Failed to fetch companies.");
-        }
-        const { data: companies } = await response.json();
-        setCompanies(companies);
-        setError(null);
-      } catch (err) {
-        setError((err as Error).message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchCompanies();
-  }, []);
+  const { companies, isLoading, error } = useCompaniesApi();
 
   if (isLoading) {
     return <LoadingIndicator />;
@@ -41,7 +18,7 @@ export default function CompanyList() {
 
   return (
     <div>
-      {companies.map((company) => (
+      {companies.map((company: ICompany) => (
         <Company key={company.companyId} {...company} />
       ))}
     </div>
