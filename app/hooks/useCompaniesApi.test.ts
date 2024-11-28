@@ -37,7 +37,7 @@ describe("useCompaniesApi", () => {
   it("handles fetch failure", async () => {
     // Mock fetch to reject with an error
     (global.fetch as jest.MockedFunction<typeof fetch>).mockRejectedValueOnce(
-      new Error("Failed to fetch")
+      new Error("Failed to fetch"),
     );
 
     // Render the hook

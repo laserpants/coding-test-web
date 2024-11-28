@@ -1,7 +1,3 @@
 export default function LoadingIndicator() {
-  return (
-    <>
-      I am loading...
-    </>
-  );
+  return <>I am loading...</>;
 }

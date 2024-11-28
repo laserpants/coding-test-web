@@ -15,7 +15,7 @@ describe("Company", () => {
     const company = { companyName: "Company A" } as ICompany;
 
     const { container } = await act(async () =>
-      render(<Company {...company} />)
+      render(<Company {...company} />),
     );
 
     expect(container).toMatchSnapshot();
