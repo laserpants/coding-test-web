@@ -41,7 +41,7 @@ describe("CompanyList", () => {
 
     expect(screen.queryByRole("list")).toBeNull();
     expect(
-      screen.getByText(/no companies available at the moment/i),
+      screen.getByText(/no companies available at the moment/i)
     ).toBeDefined();
   });
 
@@ -69,6 +69,7 @@ describe("CompanyList", () => {
     expect(screen.getByRole("list")).toBeDefined();
     expect(listItems).toHaveLength(2);
     expect(screen.getByText("Company A")).toBeDefined();
+    expect(screen.getByText("Company B")).toBeDefined();
   });
 
   it("handles fetch failure gracefully", async () => {

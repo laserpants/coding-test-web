@@ -7,7 +7,7 @@ interface ICompaniesApiResponse {
 }
 
 /**
- * Custom hook for fetching a list of companies with retry behavior
+ * Custom hook for fetching a list of companies, with retry behavior.
  */
 export function useCompaniesApi() {
   const [companies, setCompanies] = useState<ICompany[]>([]);
