@@ -26,13 +26,15 @@ export function useCompaniesApi() {
             throw new Error("Failed to fetch companies.");
           }
           return response.json();
-        },
+        }
       );
 
       setCompanies(companies);
       setError(null);
     } catch (err) {
-      setError((err as Error).message);
+      setError(
+        err instanceof Error ? err.message : "An unknown error occurred."
+      );
     } finally {
       setIsLoading(false);
     }
