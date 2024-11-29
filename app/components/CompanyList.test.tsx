@@ -41,7 +41,7 @@ describe("CompanyList", () => {
 
     expect(screen.queryByRole("list")).toBeNull();
     expect(
-      screen.getByText(/no companies available at the moment/i)
+      screen.getByText(/no companies available at the moment/i),
     ).toBeDefined();
   });
 
