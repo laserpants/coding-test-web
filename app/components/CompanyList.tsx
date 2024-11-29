@@ -48,7 +48,7 @@ export default function CompanyList() {
   return (
     <ul role="list" className="divide-y divide-gray-200">
       {companies.map((company: ICompany) => (
-        <CompanyListItem key={company.companyId} {...company} />
+        <CompanyListItem key={company.companyId} company={company} />
       ))}
     </ul>
   );

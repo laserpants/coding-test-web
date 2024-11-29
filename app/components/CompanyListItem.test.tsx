@@ -15,7 +15,7 @@ describe("CompanyListItem", () => {
       description: "This is a test company.",
     } as ICompany;
 
-    render(<CompanyListItem {...company} />);
+    render(<CompanyListItem company={company} />);
 
     expect(screen.getByText(company.companyName)).toBeDefined();
     expect(screen.getByText(company.description)).toBeDefined();
@@ -29,7 +29,7 @@ describe("CompanyListItem", () => {
       description: "This is a test company.",
     } as ICompany;
 
-    render(<CompanyListItem {...company} />);
+    render(<CompanyListItem company={company} />);
 
     // Check for fallback image
     const img = screen.getByRole("img", { name: company.companyName });
@@ -44,7 +44,7 @@ describe("CompanyListItem", () => {
       description: "This is a test company.",
     } as ICompany;
 
-    render(<CompanyListItem {...company} />);
+    render(<CompanyListItem company={company} />);
 
     // Check for the SVG icon
     const svg = screen.getByRole("img", { hidden: true });

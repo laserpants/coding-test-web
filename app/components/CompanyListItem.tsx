@@ -5,10 +5,10 @@ import Image from "next/image";
 
 // Component to render an individual company item in the list
 export default function CompanyListItem({
-  iconUrl,
-  companyName,
-  description,
-}: ICompany) {
+  company: { iconUrl, companyName, description },
+}: {
+  company: ICompany;
+}) {
   return (
     <li role="listitem" className="flex items-center py-4">
       <Image
