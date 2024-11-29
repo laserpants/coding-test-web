@@ -8,7 +8,7 @@ import { useCompaniesApi } from "../hooks/useCompaniesApi";
 export default function CompanyList() {
   const { companies, isLoading, error, retry } = useCompaniesApi();
 
-  if (isLoading) {
+  if (isLoading === true) {
     return <LoadingIndicator />;
   }
 

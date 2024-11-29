@@ -1,47 +1,87 @@
-import { render, screen } from "@testing-library/react";
-import { beforeEach, describe, it, expect, jest } from "@jest/globals";
-import { act } from "react";
+import { render, screen, cleanup } from "@testing-library/react";
+import { describe, it, beforeEach, vi, expect } from "vitest";
 import CompanyList from "./CompanyList";
+import { useCompaniesApi } from "../hooks/useCompaniesApi";
 
-global.fetch = jest.fn() as jest.MockedFunction<typeof fetch>;
+vi.mock("../hooks/useCompaniesApi", () => ({
+  useCompaniesApi: vi.fn(),
+}));
+
+const mockUseCompaniesApi = useCompaniesApi as ReturnType<typeof vi.fn>;
 
 describe("CompanyList", () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    cleanup();
+    vi.clearAllMocks();
   });
 
-  it("renders correctly", async () => {
-    const { container } = await act(async () => render(<CompanyList />));
+  it("renders the loading state", async () => {
+    mockUseCompaniesApi.mockReturnValue({
+      companies: [],
+      isLoading: true,
+      error: null,
+      retry: vi.fn(),
+    });
 
-    expect(container).toMatchSnapshot();
+    render(<CompanyList />);
+
+    expect(screen.getByRole("status")).toBeDefined();
+  });
+
+  it("renders a message when no companies are available", async () => {
+    mockUseCompaniesApi.mockReturnValue({
+      companies: [],
+      isLoading: false,
+      error: null,
+      retry: vi.fn(),
+    });
+
+    render(<CompanyList />);
+
+    expect(screen.queryByRole("list")).toBeNull();
+    expect(
+      screen.getByText(/no companies available at the moment/i)
+    ).toBeDefined();
   });
 
   it("renders the list of companies", async () => {
-    (global.fetch as jest.MockedFunction<typeof fetch>).mockResolvedValueOnce({
-      ok: true,
-      json: async () => ({
-        data: [
-          { companyId: 1, companyName: "Company A", companyCountry: "US" },
-          { companyId: 2, companyName: "Company B", companyCountry: "UK" },
-          { companyId: 3, companyName: "Company C", companyCountry: "FI" },
-        ],
-      }),
-    } as Response);
+    mockUseCompaniesApi.mockReturnValue({
+      companies: [
+        {
+          companyName: "Company A",
+          companyId: 1,
+        },
+        {
+          companyName: "Company B",
+          companyId: 2,
+        },
+      ],
+      isLoading: false,
+      error: null,
+      retry: vi.fn(),
+    });
 
-    await act(async () => render(<CompanyList />));
+    render(<CompanyList />);
 
     const listItems = screen.getAllByRole("listitem");
 
-    expect(listItems).toHaveLength(3);
+    expect(screen.getByRole("list")).toBeDefined();
+    expect(listItems).toHaveLength(2);
+    expect(screen.getByText("Company A")).toBeDefined();
   });
 
   it("handles fetch failure gracefully", async () => {
-    (global.fetch as jest.MockedFunction<typeof fetch>).mockImplementationOnce(
-      () => Promise.reject(new Error("Failed to fetch")),
-    );
+    mockUseCompaniesApi.mockReturnValue({
+      companies: [],
+      isLoading: false,
+      error: "Failed to fetch companies.",
+      retry: vi.fn(),
+    });
 
-    await act(async () => render(<CompanyList />));
+    render(<CompanyList />);
 
-    expect(screen.getByText(/error/i)).toBeInTheDocument();
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(screen.queryByRole("list")).toBeNull();
+    expect(screen.getByText(/failed to fetch companies/i)).toBeDefined();
   });
 });
