@@ -15,7 +15,7 @@ interface IFetchFunction<T> {
 export async function fetchWithBackoff<T>(
   fetchFunction: IFetchFunction<T>,
   retries: number = 3,
-  delay: number = 1000
+  delay: number = 1000,
 ): Promise<T> {
   try {
     return await fetchFunction();
