@@ -2,6 +2,16 @@ interface FetchFunction<T> {
   (): Promise<T>;
 }
 
+/**
+ * Retries a given fetch function with exponential backoff.
+ *
+ * @param fetchFn - The function to execute and retry on failure.
+ * @param retries - Maximum number of retries
+ * @param delay - Initial delay in milliseconds
+ *
+ * @returns The result of the fetch function if successful.
+ * @throws The last error encountered if all retries fail.
+ */
 export async function fetchWithBackoff<T>(
   fetchFn: FetchFunction<T>,
   retries: number = 3,

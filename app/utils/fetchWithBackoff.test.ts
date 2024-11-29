@@ -27,7 +27,7 @@ describe("fetchWithBackoff", () => {
     const mockFetch = vi.fn().mockRejectedValue(new Error("Always fails"));
 
     await expect(fetchWithBackoff(mockFetch, 2, 100)).rejects.toThrow(
-      "Always fails"
+      "Always fails",
     );
 
     expect(mockFetch).toHaveBeenCalledTimes(3); // Initial try + 2 retries

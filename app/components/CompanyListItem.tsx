@@ -3,6 +3,7 @@
 import type { ICompany } from "../types/company";
 import Image from "next/image";
 
+// Component to render an individual company item in the list
 export default function CompanyListItem({
   iconUrl,
   companyName,

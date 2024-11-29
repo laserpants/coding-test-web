@@ -8,19 +8,24 @@ import { useCompaniesApi } from "../hooks/useCompaniesApi";
 export default function CompanyList() {
   const { companies, isLoading, error, retry } = useCompaniesApi();
 
-  if (isLoading === true) {
+  // Loading indicator while data is being fetched
+  if (isLoading) {
     return <LoadingIndicator />;
   }
 
+  // Error message if fetch fails
   if (error) {
     return (
-      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-4 rounded relative flex items-center justify-between">
+      <div
+        className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-4 rounded relative flex items-center justify-between"
+        role="alert"
+        aria-live="polite"
+      >
         <div>
           <strong className="font-bold">Error: </strong>
           <span>{error}</span>
         </div>
         <button
-          role="button"
           onClick={retry}
           className="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700 transition"
         >
@@ -30,6 +35,7 @@ export default function CompanyList() {
     );
   }
 
+  // Show a message when no companies are available
   if (companies.length === 0) {
     return (
       <p className="text-gray-500 py-4">
@@ -38,6 +44,7 @@ export default function CompanyList() {
     );
   }
 
+  // Happy path: render the list of companies
   return (
     <ul className="divide-y divide-gray-200" role="list">
       {companies.map((company: ICompany) => (

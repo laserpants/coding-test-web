@@ -32,7 +32,7 @@ describe("useCompaniesApi", () => {
 
   it("should handle fetch failure gracefully", async () => {
     mockFetchWithBackoff.mockRejectedValueOnce(
-      new Error("Failed to fetch companies.")
+      new Error("Failed to fetch companies."),
     );
 
     const { result } = renderHook(() => useCompaniesApi());
