@@ -30,6 +30,7 @@ export default function CompanyListItem({
         strokeWidth={2}
         stroke="currentColor"
         className="w-6 h-6 text-gray-400 ml-2 cursor-pointer"
+        aria-hidden="true"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
       </svg>
