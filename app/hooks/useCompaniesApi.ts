@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { ICompany } from "../types/company";
 import { fetchWithBackoff } from "../utils/fetchWithBackoff";
+import type { ICompany } from "../types/company";
 
 interface ICompaniesApiResponse {
   data: ICompany[];
@@ -26,14 +26,14 @@ export function useCompaniesApi() {
             throw new Error("Failed to fetch companies.");
           }
           return response.json();
-        }
+        },
       );
 
       setCompanies(companies);
       setError(null);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "An unknown error occurred."
+        err instanceof Error ? err.message : "An unknown error occurred.",
       );
     } finally {
       setIsLoading(false);

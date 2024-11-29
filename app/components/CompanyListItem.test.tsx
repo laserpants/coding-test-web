@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, it, expect } from "vitest";
 import CompanyListItem from "./CompanyListItem";
-import { ICompany } from "../types/company";
+import type { ICompany } from "../types/company";
 
 describe("CompanyListItem", () => {
   beforeEach(() => {

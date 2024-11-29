@@ -1,7 +1,7 @@
 "use client";
 
 import CompanyListItem from "./CompanyListItem";
-import { ICompany } from "../types/company";
+import type { ICompany } from "../types/company";
 import LoadingIndicator from "./LoadingIndicator";
 import { useCompaniesApi } from "../hooks/useCompaniesApi";
 
