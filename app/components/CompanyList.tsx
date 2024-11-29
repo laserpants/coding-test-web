@@ -46,7 +46,7 @@ export default function CompanyList() {
 
   // Happy path: render the list of companies
   return (
-    <ul className="divide-y divide-gray-200" role="list">
+    <ul role="list" className="divide-y divide-gray-200">
       {companies.map((company: ICompany) => (
         <CompanyListItem key={company.companyId} {...company} />
       ))}
