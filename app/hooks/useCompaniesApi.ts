@@ -11,18 +11,14 @@ export function useCompaniesApi() {
     try {
       setIsLoading(true);
 
-      const { data: companies } = await fetchWithBackoff(
-        // Use backoff for retries
-        async () => {
-          const response = await fetch("/api/companies");
-          if (!response.ok) {
-            throw new Error("Failed to fetch companies.");
-          }
-          return response.json();
-        },
-        3, // retries
-        1000, // delay
-      );
+      // Use backoff for retries
+      const { data: companies } = await fetchWithBackoff(async () => {
+        const response = await fetch("/api/companies");
+        if (!response.ok) {
+          throw new Error("Failed to fetch companies.");
+        }
+        return response.json();
+      });
 
       setCompanies(companies);
       setError(null);

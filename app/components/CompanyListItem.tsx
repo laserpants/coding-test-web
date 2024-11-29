@@ -13,7 +13,7 @@ export default function CompanyListItem({
       <Image
         src={iconUrl ?? "https://placehold.co/50/png"}
         alt={companyName}
-        className="w-12 h-12 rounded-full"
+        className="w-12 h-12"
         width="50"
         height="50"
       />
