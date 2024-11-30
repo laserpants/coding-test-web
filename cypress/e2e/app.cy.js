@@ -12,7 +12,7 @@ describe("Page", () => {
 
     cy.visit("http://localhost:3000/");
 
-    cy.get("h3").contains("Quartr");
+    cy.get("header > p").contains("Quartr");
 
     cy.wait("@getCompanies");
 
