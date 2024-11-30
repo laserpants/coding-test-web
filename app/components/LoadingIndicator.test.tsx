@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, it, expect } from "vitest";
-import { LoadingIndicator } from "./LoadingIndicator";
+import LoadingIndicator from "./LoadingIndicator";
 
 describe("LoadingIndicator", () => {
   beforeEach(() => {

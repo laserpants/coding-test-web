@@ -1,8 +1,8 @@
 import { render, screen, cleanup } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { describe, it, beforeEach, vi, expect } from "vitest";
-import CompanyList from "./CompanyList";
 import { useCompaniesApi } from "../hooks/useCompaniesApi";
+import CompanyList from "./CompanyList";
+import userEvent from "@testing-library/user-event";
 
 vi.mock("../hooks/useCompaniesApi", () => ({
   useCompaniesApi: vi.fn(),

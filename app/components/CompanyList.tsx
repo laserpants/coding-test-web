@@ -1,10 +1,10 @@
 "use client";
 
 import CompanyListItem from "./CompanyListItem";
-import type { ICompany } from "../types/company";
-import { LoadingIndicator } from "./LoadingIndicator";
+import LoadingIndicator from "./LoadingIndicator";
+import ErrorAlert from "./ErrorAlert";
 import { useCompaniesApi } from "../hooks/useCompaniesApi";
-import { ErrorAlert } from "./ErrorAlert";
+import type { ICompany } from "../types/company";
 
 export default function CompanyList() {
   const { companies, isLoading, error, retry } = useCompaniesApi();
@@ -31,9 +31,16 @@ export default function CompanyList() {
   // Happy path: render the list of companies
   return (
     <ul role="list" className="divide-y divide-gray-200">
-      {companies.map((company: ICompany) => (
-        <CompanyListItem key={company.companyId} company={company} />
-      ))}
+      {companies.map(
+        ({ companyId, description, companyName, iconUrl }: ICompany) => (
+          <CompanyListItem
+            key={companyId}
+            companyName={companyName}
+            description={description}
+            iconUrl={iconUrl}
+          />
+        ),
+      )}
     </ul>
   );
 }

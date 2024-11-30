@@ -1,6 +1,6 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { beforeEach, describe, it, expect } from "vitest";
-import { ErrorAlert } from "./ErrorAlert";
+import ErrorAlert from "./ErrorAlert";
 
 describe("ErrorAlert", () => {
   beforeEach(() => {

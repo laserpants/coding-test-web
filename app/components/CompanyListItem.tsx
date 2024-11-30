@@ -1,13 +1,16 @@
 "use client";
 
-import type { ICompany } from "../types/company";
 import Image from "next/image";
 
 // Component to render an individual company in the list
 export default function CompanyListItem({
-  company: { iconUrl, companyName, description },
+  iconUrl = null,
+  companyName,
+  description,
 }: {
-  company: ICompany;
+  iconUrl?: string | null;
+  companyName: string;
+  description: string;
 }) {
   return (
     <li role="listitem" className="flex items-center py-4">

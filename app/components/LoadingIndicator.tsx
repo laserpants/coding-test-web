@@ -1,4 +1,4 @@
-export function LoadingIndicator() {
+export default function LoadingIndicator() {
   return (
     <div
       role="status"

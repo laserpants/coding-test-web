@@ -1,5 +1,5 @@
 /**
- * Enum for ISO 4217 currency codes.
+ * Union type for ISO 4217 currency codes.
  */
 export type Currency =
   | "SEK" // Swedish Krona

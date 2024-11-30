@@ -1,4 +1,4 @@
-export function ErrorAlert<T>({
+export default function ErrorAlert<T>({
   error,
   onRetry,
 }: {
