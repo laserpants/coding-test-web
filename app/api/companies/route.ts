@@ -5,7 +5,7 @@ import logger from "../../utils/logger";
 /**
  * GET /api/companies
  *
- * TODO: This is a placeholder implementation. Replace this with real API.
+ * TODO: This is a placeholder implementation -- replace with an actual backend API.
  */
 export async function GET(request: Request) {
   logger.info("GET /api/companies called");
