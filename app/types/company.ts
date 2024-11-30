@@ -1,5 +1,5 @@
-import type { CountryCode } from "../types/ISO/country";
-import type { Currency } from "../types/ISO/currency";
+import type { CountryCode } from "../types/iso/country";
+import type { Currency } from "../types/iso/currency";
 import type { ISIN } from "./isin";
 
 interface IEvent {
