@@ -1,4 +1,6 @@
-const companies = [
+import { ICompany } from "../types/company";
+
+const companies: ICompany[] = [
   {
     companyId: 1,
     companyName: "OKEA",
