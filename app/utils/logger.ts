@@ -1,5 +1,21 @@
 import { createLogger, format, transports } from "winston";
 
+/**
+ * Winston logger instance. The logger supports:
+ *
+ * - Logging levels: Default level is "info".
+ * - JSON format: Logs are formatted as JSON with timestamps for easy parsing.
+ * - Transports:
+ *   - Console: Logs all levels to the console.
+ *   - File: Saves "error" level logs to `logs/error.log`.
+ *   - File: Saves all logs to `logs/combined.log`.
+ *
+ * @see https://github.com/winstonjs/winston
+ *
+ * Example usage:
+ * logger.info("Informational message");
+ * logger.error("Error message with details", { error });
+ */
 const logger = createLogger({
   level: "info",
   format: format.combine(
