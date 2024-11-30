@@ -3,7 +3,7 @@ import { createLogger, format, transports } from "winston";
 /**
  * Winston logger instance. The logger supports:
  *
- * - Logging levels: Default level is "info".
+ * - Logging verbosity levels: Default is "info".
  * - JSON format: Logs are formatted as JSON with timestamps for easy parsing.
  * - Transports:
  *   - Console: Logs all levels to the console.
