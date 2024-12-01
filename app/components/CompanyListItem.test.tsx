@@ -10,6 +10,7 @@ describe('CompanyListItem', () => {
   it('renders the company name and description', () => {
     const company = {
       iconUrl: 'https://example.com/icon.png',
+      companyId: 1,
       companyName: 'Test Company',
       description: 'This is a test company.',
     };
@@ -24,6 +25,7 @@ describe('CompanyListItem', () => {
   it('renders a fallback image when iconUrl is null', () => {
     const company = {
       iconUrl: null, // No image provided
+      companyId: 1,
       companyName: 'Test Company',
       description: 'This is a test company.',
     };
@@ -38,6 +40,7 @@ describe('CompanyListItem', () => {
 
   it('renders a fallback image when iconUrl is missing', () => {
     const company = {
+      companyId: 1,
       companyName: 'Test Company',
       description: 'This is a test company.',
     };
@@ -52,6 +55,7 @@ describe('CompanyListItem', () => {
   it('renders the SVG icon correctly', () => {
     const company = {
       iconUrl: 'https://example.com/icon.png',
+      companyId: 1,
       companyName: 'Test Company',
       description: 'This is a test company.',
     };

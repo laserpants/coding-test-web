@@ -1,14 +1,17 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Component to render an individual company in the list
 export default function CompanyListItem({
   iconUrl = null,
+  companyId,
   companyName,
   description,
 }: {
   iconUrl?: string | null;
+  companyId: number;
   companyName: string;
   description: string;
 }) {
@@ -27,17 +30,19 @@ export default function CompanyListItem({
           <p className="text-sm text-gray-500">{description}</p>
         </div>
       </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2}
-        stroke="currentColor"
-        className="ml-2 h-6 w-6 cursor-pointer text-gray-400"
-        aria-hidden="true"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
+      <Link href={`/company/${companyId}`}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="ml-2 h-6 w-6 cursor-pointer text-gray-400"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </Link>
     </li>
   );
 }

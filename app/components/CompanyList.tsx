@@ -35,6 +35,7 @@ export default function CompanyList() {
         ({ companyId, description, companyName, iconUrl }: ICompany) => (
           <CompanyListItem
             key={companyId}
+            companyId={companyId}
             companyName={companyName}
             description={description}
             iconUrl={iconUrl}
