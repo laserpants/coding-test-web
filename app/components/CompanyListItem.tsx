@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 // Component to render an individual company in the list
 export default function CompanyListItem({
@@ -15,16 +15,16 @@ export default function CompanyListItem({
   return (
     <li role="listitem" className="flex items-center py-4">
       <Image
-        src={iconUrl ?? "https://placehold.co/50/png"}
+        src={iconUrl ?? 'https://placehold.co/50/png'}
         alt={companyName}
-        className="w-12 h-12"
+        className="h-12 w-12"
         width="50"
         height="50"
       />
       <div className="ml-4 flex-1">
         <p className="text-base font-semibold text-gray-800">{companyName}</p>
-        <div className="text-sm text-gray-500 line-clamp-2">
-          <p className="text-sm text-gray-500 ">{description}</p>
+        <div className="line-clamp-2 text-sm text-gray-500">
+          <p className="text-sm text-gray-500">{description}</p>
         </div>
       </div>
       <svg
@@ -33,7 +33,7 @@ export default function CompanyListItem({
         viewBox="0 0 24 24"
         strokeWidth={2}
         stroke="currentColor"
-        className="w-6 h-6 text-gray-400 ml-2 cursor-pointer"
+        className="ml-2 h-6 w-6 cursor-pointer text-gray-400"
         aria-hidden="true"
       >
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

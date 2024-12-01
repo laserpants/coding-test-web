@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import CompanyListItem from "./CompanyListItem";
-import LoadingIndicator from "./LoadingIndicator";
-import ErrorAlert from "./ErrorAlert";
-import { useCompaniesApi } from "../hooks/useCompaniesApi";
-import type { ICompany } from "../types/company";
+import CompanyListItem from './CompanyListItem';
+import LoadingIndicator from './LoadingIndicator';
+import ErrorAlert from './ErrorAlert';
+import { useCompaniesApi } from '../hooks/useCompaniesApi';
+import type { ICompany } from '../types/company';
 
 export default function CompanyList() {
   const { companies, isLoading, error, retry } = useCompaniesApi();
@@ -22,7 +22,7 @@ export default function CompanyList() {
   // Show a message when no companies are available
   if (companies.length === 0) {
     return (
-      <p className="text-gray-500 py-4">
+      <p className="py-4 text-gray-500">
         No companies available at the moment.
       </p>
     );

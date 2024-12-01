@@ -1,24 +1,24 @@
-describe("Page", () => {
-  it("should show the home page", () => {
-    cy.intercept("GET", "/api/companies", {
+describe('Page', () => {
+  it('should show the home page', () => {
+    cy.intercept('GET', '/api/companies', {
       statusCode: 200,
       body: {
         data: [
-          { companyId: 1, companyName: "Company A", companyCountry: "US" },
-          { companyId: 2, companyName: "Company B", companyCountry: "UK" },
+          { companyId: 1, companyName: 'Company A', companyCountry: 'US' },
+          { companyId: 2, companyName: 'Company B', companyCountry: 'UK' },
         ],
       },
-    }).as("getCompanies");
+    }).as('getCompanies');
 
-    cy.visit("http://localhost:3000/");
+    cy.visit('http://localhost:3000/');
 
-    cy.get("header > p").contains("Quartr");
+    cy.get('header > p').contains('Quartr');
 
-    cy.wait("@getCompanies");
+    cy.wait('@getCompanies');
 
-    cy.findAllByRole("listitem").should("have.length", 2);
+    cy.findAllByRole('listitem').should('have.length', 2);
 
     // Verify the text content of the first list item
-    cy.findAllByRole("listitem").first().should("contain.text", "Company A");
+    cy.findAllByRole('listitem').first().should('contain.text', 'Company A');
   });
 });

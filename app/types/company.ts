@@ -1,6 +1,6 @@
-import type { CountryCode } from "../types/iso/country";
-import type { Currency } from "../types/iso/currency";
-import type { ISIN } from "./isin";
+import type { CountryCode } from '../types/iso/country';
+import type { Currency } from '../types/iso/currency';
+import type { ISIN } from './isin';
 
 interface IEvent {
   audioUrl?: string | null; // Optional audio URL

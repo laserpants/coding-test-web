@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { fetchWithBackoff } from "../utils/fetchWithBackoff";
-import type { ICompany } from "../types/company";
+import { useState, useEffect } from 'react';
+import { fetchWithBackoff } from '../utils/fetchWithBackoff';
+import type { ICompany } from '../types/company';
 
 interface ICompaniesApiResponse {
   data: ICompany[];
@@ -21,9 +21,9 @@ export function useCompaniesApi() {
       // Use backoff for retries
       const { data: companies } = await fetchWithBackoff<ICompaniesApiResponse>(
         async () => {
-          const response = await fetch("/api/companies");
+          const response = await fetch('/api/companies');
           if (!response.ok) {
-            throw new Error("Failed to fetch companies.");
+            throw new Error('Failed to fetch companies.');
           }
           return response.json();
         },
@@ -33,7 +33,7 @@ export function useCompaniesApi() {
       setError(null);
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "An unknown error occurred.",
+        err instanceof Error ? err.message : 'An unknown error occurred.',
       );
     } finally {
       setIsLoading(false);

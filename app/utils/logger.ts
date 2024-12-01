@@ -1,4 +1,4 @@
-import { createLogger, format, transports } from "winston";
+import { createLogger, format, transports } from 'winston';
 
 /**
  * Winston logger instance. The logger supports:
@@ -17,17 +17,17 @@ import { createLogger, format, transports } from "winston";
  * logger.error("Error message with details", { error });
  */
 const logger = createLogger({
-  level: "info",
+  level: 'info',
   format: format.combine(
     format.timestamp(),
     format.json(), // Logs in JSON format
   ),
   transports: [
     new transports.Console({
-      silent: process.env.NODE_ENV === "test",
+      silent: process.env.NODE_ENV === 'test',
     }),
-    new transports.File({ filename: "logs/error.log", level: "error" }),
-    new transports.File({ filename: "logs/combined.log" }),
+    new transports.File({ filename: 'logs/error.log', level: 'error' }),
+    new transports.File({ filename: 'logs/combined.log' }),
   ],
 });
 

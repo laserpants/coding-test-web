@@ -1,49 +1,49 @@
-import { describe, it, vi, expect } from "vitest";
-import { fetchWithBackoff } from "./fetchWithBackoff";
+import { describe, it, vi, expect } from 'vitest';
+import { fetchWithBackoff } from './fetchWithBackoff';
 
-describe("fetchWithBackoff", () => {
-  it("resolves successfully on the first attempt", async () => {
-    const mockFetch = vi.fn().mockResolvedValueOnce("Success");
+describe('fetchWithBackoff', () => {
+  it('resolves successfully on the first attempt', async () => {
+    const mockFetch = vi.fn().mockResolvedValueOnce('Success');
     const result = await fetchWithBackoff(mockFetch);
 
-    expect(result).toBe("Success");
+    expect(result).toBe('Success');
     expect(mockFetch).toHaveBeenCalledTimes(1);
   });
 
-  it("retries the specified number of times on failure", async () => {
+  it('retries the specified number of times on failure', async () => {
     const mockFetch = vi
       .fn()
-      .mockRejectedValueOnce(new Error("Fail 1"))
-      .mockRejectedValueOnce(new Error("Fail 2"))
-      .mockResolvedValueOnce("Success after retries");
+      .mockRejectedValueOnce(new Error('Fail 1'))
+      .mockRejectedValueOnce(new Error('Fail 2'))
+      .mockResolvedValueOnce('Success after retries');
 
     const result = await fetchWithBackoff(mockFetch, 3, 100);
 
-    expect(result).toBe("Success after retries");
+    expect(result).toBe('Success after retries');
     expect(mockFetch).toHaveBeenCalledTimes(3);
   });
 
-  it("throws an error after exceeding maximum retries", async () => {
-    const mockFetch = vi.fn().mockRejectedValue(new Error("Always fails"));
+  it('throws an error after exceeding maximum retries', async () => {
+    const mockFetch = vi.fn().mockRejectedValue(new Error('Always fails'));
 
     await expect(fetchWithBackoff(mockFetch, 2, 100)).rejects.toThrow(
-      "Always fails",
+      'Always fails',
     );
 
     expect(mockFetch).toHaveBeenCalledTimes(3); // Initial try + 2 retries
   });
 
-  it("respects the delay between retries", async () => {
+  it('respects the delay between retries', async () => {
     const mockFetch = vi
       .fn()
-      .mockRejectedValueOnce(new Error("Fail"))
-      .mockResolvedValueOnce("Success");
+      .mockRejectedValueOnce(new Error('Fail'))
+      .mockResolvedValueOnce('Success');
 
-    const delaySpy = vi.spyOn(global, "setTimeout");
+    const delaySpy = vi.spyOn(global, 'setTimeout');
 
     const result = await fetchWithBackoff(mockFetch, 1, 200);
 
-    expect(result).toBe("Success");
+    expect(result).toBe('Success');
     expect(delaySpy).toHaveBeenCalledWith(expect.any(Function), 200);
     expect(mockFetch).toHaveBeenCalledTimes(2);
 
