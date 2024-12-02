@@ -6,7 +6,6 @@ import Link from 'next/link';
 // Component to render an individual company in the list
 export default function CompanyListItem({
   iconUrl = null,
-  companyId,
   companyName,
   description,
 }: {
