@@ -30,7 +30,7 @@ export default function CompanyListItem({
           <p className="text-sm text-gray-500">{description}</p>
         </div>
       </div>
-      <Link href={`/company/${companyId}`}>
+      <Link href="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
