@@ -45,6 +45,9 @@ export async function GET(request: Request) {
   } catch (error) {
     logger.error('Failed to fetch companies', { error });
 
-    return NextResponse.error();
+    return NextResponse.json(null, {
+      status: 500,
+      statusText: 'Internal Server Error',
+    });
   }
 }
